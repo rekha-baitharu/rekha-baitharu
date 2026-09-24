@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "tisso_banner": {
@@ -26,6 +35,7 @@
         "block_1": {
           "type": "product_block",
           "settings": {
+            "product": "black-leather-bag",
             "hotspot_x": 68,
             "hotspot_y": 54
           }
@@ -33,36 +43,41 @@
         "block_2": {
           "type": "product_block",
           "settings": {
-            "hotspot_x": 62,
-            "hotspot_y": 36
+            "product": "blue-silk-tuxedo",
+            "hotspot_x": 82,
+            "hotspot_y": 50
           }
         },
         "block_3": {
           "type": "product_block",
           "settings": {
-            "hotspot_x": 85,
+            "product": "chequered-red-shirt",
+            "hotspot_x": 62,
             "hotspot_y": 24
           }
         },
         "block_4": {
           "type": "product_block",
           "settings": {
+            "product": "classic-leather-jacket",
             "hotspot_x": 75,
-            "hotspot_y": 64
+            "hotspot_y": 32
           }
         },
         "block_5": {
           "type": "product_block",
           "settings": {
-            "hotspot_x": 51,
-            "hotspot_y": 67
+            "product": "classic-varsity-top",
+            "hotspot_x": 56,
+            "hotspot_y": 30
           }
         },
         "block_6": {
           "type": "product_block",
           "settings": {
-            "hotspot_x": 89,
-            "hotspot_y": 72
+            "product": "dark-denim-top",
+            "hotspot_x": 75,
+            "hotspot_y": 39
           }
         }
       },
@@ -77,6 +92,7 @@
       "settings": {
         "heading": "Tisso vison in the wild",
         "enable_addon": true,
+        "addon_product": "",
         "qualifying_color": "Black",
         "qualifying_size": "Medium",
         "padding_top": 40,
