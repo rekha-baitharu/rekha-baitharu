@@ -401,5 +401,31 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <!-- Global Freebie Product Resolution (Soft Winter Jacket - 10221714276455) -->
+    <script>
+      {%- assign freebie_product_global = null -%}
+      {%- for p in collections.all.products -%}
+        {%- if p.id == 10221714276455 -%}
+          {%- assign freebie_product_global = p -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if freebie_product_global == blank -%}
+        {%- for p in collections.all.products -%}
+          {%- assign p_title_lower = p.title | downcase -%}
+          {%- if p_title_lower contains 'soft winter jacket' or p_title_lower contains 'soft' and p_title_lower contains 'jacket' -%}
+            {%- assign freebie_product_global = p -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      window._tissoFreebieData = {
+        targetProductId: '10221714276455',
+        product: {%- if freebie_product_global != blank and freebie_product_global.id != blank -%}{{ freebie_product_global | json }}{%- else -%}null{%- endif -%}
+      };
+    </script>
+    <script src="{{ 'tisso-gift-guide.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

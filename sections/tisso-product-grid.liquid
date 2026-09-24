@@ -1,0 +1,357 @@
+{{ 'tisso-gift-guide.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'tisso-gift-guide.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id="tisso-product-grid"
+  class="tisso-grid-section section-{{ section.id }}-padding"
+  data-section-id="{{ section.id }}"
+  data-addon-enabled="{{ section.settings.enable_addon }}"
+  data-qualifying-color="{{ section.settings.qualifying_color | escape }}"
+  data-qualifying-size="{{ section.settings.qualifying_size | escape }}"
+>
+  <div class="tisso-grid-container">
+    {%- if section.settings.heading != blank -%}
+      <div class="tisso-grid-header">
+        <h2 class="tisso-grid-title">
+          {{ section.settings.heading }}
+        </h2>
+      </div>
+    {%- endif -%}
+
+    <div class="tisso-product-grid" role="list">
+      {%- for block in section.blocks -%}
+        {%- assign selected_product = block.settings.product -%}
+        {%- if selected_product.title == blank and block.settings.product != blank -%}
+          {%- assign selected_product = all_products[block.settings.product] -%}
+        {%- endif -%}
+
+        {%- assign hotspot_x = block.settings.hotspot_x | default: 50 -%}
+        {%- assign hotspot_y = block.settings.hotspot_y | default: 50 -%}
+
+        <div class="tisso-product-card" role="listitem" {{ block.shopify_attributes }}>
+          <div class="tisso-product-card__image-wrap">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 800
+                | image_tag:
+                  class: 'tisso-product-card__img',
+                  loading: 'lazy',
+                  widths: '300, 500, 800',
+                  alt: block.settings.image.alt | default: selected_product.title | default: 'Product image'
+              }}
+            {%- elsif selected_product != blank and selected_product.featured_image != blank -%}
+              {{
+                selected_product.featured_image
+                | image_url: width: 800
+                | image_tag:
+                  class: 'tisso-product-card__img',
+                  loading: 'lazy',
+                  widths: '300, 500, 800',
+                  alt: selected_product.featured_image.alt | default: selected_product.title
+              }}
+            {%- else -%}
+              {%- assign placeholder_index = forloop.index | modulo: 6 | plus: 1 -%}
+              {{ 'product-apparel-' | append: placeholder_index | placeholder_svg_tag: 'tisso-product-card__img placeholder-svg' }}
+            {%- endif -%}
+
+            <!-- Hotspot Button with Block-Level Selected Product Data -->
+            <button
+              type="button"
+              class="tisso-hotspot-btn"
+              style="left: {{ hotspot_x }}%; top: {{ hotspot_y }}%;"
+              data-block-id="{{ block.id }}"
+              data-slot-index="{{ forloop.index0 }}"
+              {% if selected_product != blank %}
+                data-product-id="{{ selected_product.id }}"
+                data-product-handle="{{ selected_product.handle }}"
+                data-product="{{ selected_product | json | escape }}"
+              {% endif %}
+              aria-label="View {{ selected_product.title | default: 'Product details' }}"
+              aria-haspopup="dialog"
+            >
+              <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+                <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Product JSON Serialization for this specific block -->
+          <script type="application/json" id="tisso-product-data-{{ block.id }}" class="tisso-product-json">
+            {%- if selected_product != blank -%}
+              {{ selected_product | json }}
+            {%- else -%}
+              null
+            {%- endif -%}
+          </script>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <!-- Addon Product Data Script (Soft Winter Jacket - 10221714276455) -->
+  {%- assign addon_product = section.settings.addon_product -%}
+  {%- if addon_product.id == blank and section.settings.addon_product != blank -%}
+    {%- assign addon_product = all_products[section.settings.addon_product] -%}
+  {%- endif -%}
+  {%- if addon_product == blank or addon_product.id == blank -%}
+    {%- for p in collections.all.products -%}
+      {%- if p.id == 10221714276455 -%}
+        {%- assign addon_product = p -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- if addon_product == blank or addon_product.id == blank -%}
+    {%- for p in collections.all.products -%}
+      {%- assign p_title_lower = p.title | downcase -%}
+      {%- if p_title_lower contains 'soft winter jacket' or p_title_lower contains 'soft' and p_title_lower contains 'jacket' -%}
+        {%- assign addon_product = p -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  <script type="application/json" id="tisso-addon-data-{{ section.id }}" class="tisso-addon-json">
+    {%- if addon_product != blank and addon_product.id != blank -%}
+      {{ addon_product | json }}
+    {%- else -%}
+      null
+    {%- endif -%}
+  </script>
+</div>
+
+<!-- Reusable Product Modal / Popup (Rendered Once) -->
+<div
+  class="tisso-modal-backdrop"
+  id="TissoModal-{{ section.id }}"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="TissoModalTitle-{{ section.id }}"
+>
+  <div class="tisso-modal" tabindex="-1">
+    <!-- Close Button -->
+    <button
+      type="button"
+      class="tisso-modal__close-btn"
+      aria-label="Close modal"
+    >
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M1 1L13 13M1 13L13 1" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Product Info Header -->
+    <div class="tisso-modal__product-header">
+      <div class="tisso-modal__thumbnail">
+        <img
+          class="tisso-modal__thumbnail-img"
+          src=""
+          alt=""
+          width="120"
+          height="120"
+          loading="eager"
+        >
+      </div>
+      <div class="tisso-modal__info">
+        <h3 class="tisso-modal__title" id="TissoModalTitle-{{ section.id }}"></h3>
+        <div class="tisso-modal__price-wrapper">
+          <span class="tisso-modal__price"></span>
+          <span class="tisso-modal__compare-price"></span>
+        </div>
+        <div class="tisso-modal__description"></div>
+      </div>
+    </div>
+
+    <!-- Variant Options (Populated Dynamically) -->
+    <div class="tisso-modal__options"></div>
+
+    <!-- Add To Cart Button -->
+    <button type="button" class="tisso-btn--modal-add">
+      <span class="tisso-btn-text">ADD TO CART</span>
+      <span class="tisso-arrow" aria-hidden="true">
+        <svg width="34" height="12" viewBox="0 0 34 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 6H32M32 6L26.5 1M32 6L26.5 11" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <div class="tisso-spinner" aria-hidden="true"></div>
+    </button>
+
+    <!-- Toast / Error / Success Message -->
+    <div class="tisso-modal__message" role="status" aria-live="polite"></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Tisso Product Grid",
+  "tag": "section",
+  "class": "section-tisso-grid",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Tisso vison in the wild"
+    },
+    {
+      "type": "header",
+      "content": "Automatic Add-on Rule (Soft Winter Jacket)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_addon",
+      "label": "Enable Automatic Add-on",
+      "default": true,
+      "info": "Automatically adds the complimentary add-on product when a customer selects the qualifying options."
+    },
+    {
+      "type": "product",
+      "id": "addon_product",
+      "label": "Add-on Product",
+      "info": "Select the Soft Winter Jacket product."
+    },
+    {
+      "type": "text",
+      "id": "qualifying_color",
+      "label": "Qualifying Color",
+      "default": "Black",
+      "info": "Color option value that triggers the add-on (case-insensitive)."
+    },
+    {
+      "type": "text",
+      "id": "qualifying_size",
+      "label": "Qualifying Size",
+      "default": "Medium",
+      "info": "Size option value that triggers the add-on (case-insensitive)."
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_block",
+      "name": "Product Block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image Override",
+          "info": "Optional: overrides the product featured image"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_x",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot Horizontal Position (%)",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "hotspot_y",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot Vertical Position (%)",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tisso Product Grid",
+      "blocks": [
+        {
+          "type": "product_block",
+          "settings": {
+            "hotspot_x": 68,
+            "hotspot_y": 54
+          }
+        },
+        {
+          "type": "product_block",
+          "settings": {
+            "hotspot_x": 62,
+            "hotspot_y": 36
+          }
+        },
+        {
+          "type": "product_block",
+          "settings": {
+            "hotspot_x": 85,
+            "hotspot_y": 24
+          }
+        },
+        {
+          "type": "product_block",
+          "settings": {
+            "hotspot_x": 75,
+            "hotspot_y": 64
+          }
+        },
+        {
+          "type": "product_block",
+          "settings": {
+            "hotspot_x": 51,
+            "hotspot_y": 67
+          }
+        },
+        {
+          "type": "product_block",
+          "settings": {
+            "hotspot_x": 89,
+            "hotspot_y": 72
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1105 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ==========================================================================
+   TISSO VISION GIFT GUIDE - STYLES
+   ========================================================================== */
+
+:root {
+  --tisso-font-family: 'Jost', sans-serif;
+  --tisso-black: #000000;
+  --tisso-white: #ffffff;
+  --tisso-header-bg: #f5f5f5;
+  --tisso-yellow: #fff544;
+  --tisso-gray-border: #e2e2e2;
+  --tisso-gray-text: #666666;
+  --tisso-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scoped Font Enforcement */
+.tisso-gift-guide-hero,
+.tisso-gift-guide-hero *,
+.tisso-header,
+.tisso-header *,
+.tisso-banner-announcement,
+.tisso-banner-announcement * {
+  font-family: 'Jost', sans-serif !important;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   EXACT PIXEL-PERFECT TISSO HEADER
+   ========================================================================== */
+
+.tisso-header {
+  width: 100%;
+  min-height: 69px;
+  background: var(--tisso-header-bg);
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 20;
+}
+
+.tisso-header__inner {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 10px 67px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Logo SVG Styling */
+.tisso-header__logo {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--tisso-black);
+}
+
+.tisso-logo-svg-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 19px;
+}
+
+.tisso-logo-word {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5px;
+  height: 19px;
+}
+
+.tisso-logo-word svg {
+  display: block;
+  height: 19px;
+  width: auto;
+  fill: currentColor;
+}
+
+/* Center Promotional Text */
+.tisso-header__message {
+  justify-self: center;
+  color: var(--tisso-black);
+  font-family: 'Jost', sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 13.42px;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Yellow Choose Gift CTA Button */
+.tisso-header__button {
+  justify-self: end;
+  width: 207px;
+  height: 44px;
+  background: var(--tisso-yellow);
+  color: var(--tisso-black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px 0 41px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20.48px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+}
+
+.tisso-header__button:hover {
+  background-color: #faef28;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.tisso-header__button-text {
+  display: inline-block;
+}
+
+.tisso-header__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 12px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tisso-header__arrow svg {
+  display: block;
+  width: 26px;
+  height: 12px;
+}
+
+.tisso-header__button:hover .tisso-header__arrow {
+  transform: translateX(5px);
+}
+
+.tisso-header__button:focus-visible {
+  outline: 2px solid var(--tisso-black);
+  outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   DESKTOP HERO SECTION (1440px x 780px EXACT FIGMA COMPOSITION)
+   ========================================================================== */
+
+.tisso-gift-guide-hero {
+  position: relative;
+  width: 100%;
+  background: #FFFFFF;
+  overflow: hidden;
+  border-bottom: 1px solid var(--tisso-gray-border);
+}
+
+/* 1440x780 Desktop Canvas Container */
+.tisso-hero-canvas-desktop {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 780px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  display: block;
+}
+
+/* Desktop Illustration Frame: 1440px x 390px */
+.tisso-hero-illustration-desktop {
+  position: absolute;
+  width: 100%;
+  max-width: 1440px;
+  height: 390px;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tisso-hero-illustration-desktop svg,
+.tisso-hero-illustration-desktop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Desktop Heading: 70px / 500 weight / 70px line-height at left: 67px, top: 425px */
+.tisso-gift-guide-hero__title--desktop {
+  position: absolute;
+  left: 67px;
+  top: 425px;
+  margin: 0;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 70px !important;
+  font-weight: 500 !important;
+  line-height: 70px !important;
+  color: #000000 !important;
+  letter-spacing: normal !important;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* Desktop Description: 20px / 400 weight / 28px line-height at left: 67px, top: 545px, width: 483px */
+.tisso-gift-guide-hero__description--desktop {
+  position: absolute;
+  left: 67px;
+  top: 545px;
+  width: 483px;
+  height: 84px;
+  margin: 0;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 28px !important;
+  color: #000000 !important;
+  z-index: 2;
+}
+
+/* Desktop CTA Button: 220px x 50px at left: 67px, top: 679px */
+.tisso-gift-guide-hero__button--desktop {
+  position: absolute;
+  left: 67px;
+  top: 679px;
+  width: 220px;
+  height: 50px;
+  background: #000000;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 20.48px !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  z-index: 2;
+}
+
+.tisso-gift-guide-hero__button--desktop .tisso-hero__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 12px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tisso-gift-guide-hero__button--desktop .tisso-hero__arrow svg {
+  display: block;
+  width: 27px;
+  height: 12px;
+  fill: #FFFFFF;
+}
+
+.tisso-gift-guide-hero__button--desktop:hover {
+  background-color: #222222;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.tisso-gift-guide-hero__button--desktop:hover .tisso-hero__arrow {
+  transform: translateX(5px);
+}
+
+.tisso-gift-guide-hero__button--desktop:focus-visible {
+  outline: 2px solid var(--tisso-black);
+  outline-offset: 3px;
+}
+
+
+/* ==========================================================================
+   MOBILE HERO SECTION (375px x 421px EXACT FIGMA COMPOSITION)
+   ========================================================================== */
+
+.tisso-hero-canvas-mobile {
+  display: none;
+}
+
+@media (max-width: 749px) {
+  .tisso-hero-canvas-desktop {
+    display: none !important;
+  }
+
+  .tisso-hero-canvas-mobile {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 375px;
+    height: 421px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    overflow: hidden;
+  }
+
+  /* Mobile Heading: 30px / 500 weight / 30px line-height at top: 49px, center */
+  .tisso-gift-guide-hero__title--mobile {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 49px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    font-family: 'Jost', sans-serif !important;
+    font-size: 30px !important;
+    font-weight: 500 !important;
+    line-height: 30px !important;
+    color: #000000 !important;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  /* Mobile Description: 16px / 400 weight / 20.8px line-height at top: 103px, width: 340px, center */
+  .tisso-gift-guide-hero__description--mobile {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 103px;
+    width: 340px;
+    max-width: 90%;
+    margin: 0;
+    text-align: center;
+    font-family: 'Jost', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 20.8px !important;
+    color: #000000 !important;
+    z-index: 2;
+  }
+
+  /* Mobile Oversized Illustration Frame: 686px x 264px at left: -140px, top: 157px */
+  .tisso-hero-illustration-mobile {
+    position: absolute;
+    width: 686px;
+    height: 264px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 157px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .tisso-hero-illustration-mobile svg,
+  .tisso-hero-illustration-mobile img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Mobile CTA Button: top: 337px, centered, padding: 13px 20px */
+  .tisso-gift-guide-hero__button--mobile {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 337px;
+    background: #000000;
+    padding: 13px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 10;
+    white-space: nowrap;
+    transition: background-color 0.25s ease;
+  }
+
+  .tisso-gift-guide-hero__button--mobile span {
+    font-family: 'Jost', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 20.48px !important;
+    text-transform: uppercase !important;
+    color: #F5F5F5 !important;
+  }
+
+  .tisso-gift-guide-hero__button--mobile .tisso-hero__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 12px;
+    transition: transform 0.3s ease;
+  }
+
+  .tisso-gift-guide-hero__button--mobile .tisso-hero__arrow svg {
+    display: block;
+    width: 26px;
+    height: 12px;
+    fill: #F5F5F5;
+  }
+
+  .tisso-gift-guide-hero__button--mobile:hover .tisso-hero__arrow {
+    transform: translateX(4px);
+  }
+}
+
+
+/* ==========================================================================
+   SUSTAINABLE ANNOUNCEMENT SECTION (EXACT FIGMA SPECIFICATIONS)
+   ========================================================================== */
+
+.tisso-banner-announcement {
+  width: 100%;
+  background: #F5F5F5;
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Desktop: max-width: 1440px, margin: 0 auto, padding: 10px 67px, font-size: 16px, line-height: 13.42px */
+.tisso-banner-announcement--desktop {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 10px 67px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #000000;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 13.42px;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.tisso-banner-announcement--mobile {
+  display: none;
+}
+
+@media (max-width: 749px) {
+  .tisso-banner-announcement--desktop {
+    display: none !important;
+  }
+
+  /* Mobile: width: 375px max, padding: 10px 20px, font-size: 14px, line-height: 13.42px */
+  .tisso-banner-announcement--mobile {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 20px;
+    max-width: 375px;
+    margin: 0 auto;
+    color: #000000;
+    font-family: 'Jost', sans-serif !important;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 13.42px;
+    word-wrap: break-word;
+    box-sizing: border-box;
+  }
+}
+
+
+/* ==========================================================================
+   PRODUCT GRID SECTION
+   ========================================================================== */
+
+.tisso-grid-section {
+  padding: 60px 0 80px 0;
+  background-color: var(--tisso-white);
+}
+
+.tisso-grid-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 67px;
+  box-sizing: border-box;
+}
+
+.tisso-grid-header {
+  margin-bottom: 28px;
+}
+
+.tisso-grid-title {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--tisso-black);
+  margin: 0;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+/* 3x2 Grid for Desktop */
+.tisso-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tisso-product-card {
+  position: relative;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  aspect-ratio: 1 / 1;
+}
+
+.tisso-product-card__image-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+}
+
+.tisso-product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tisso-product-card:hover .tisso-product-card__img {
+  transform: scale(1.03);
+}
+
+/* Circular Hotspot Button */
+.tisso-hotspot-btn {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: var(--tisso-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s ease, box-shadow 0.2s ease;
+  z-index: 10;
+  padding: 0;
+}
+
+.tisso-hotspot-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  pointer-events: none;
+  transition: transform 0.25s ease;
+}
+
+.tisso-hotspot-btn:hover {
+  background-color: var(--tisso-white);
+  transform: translate(-50%, -50%) scale(1.18);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.tisso-hotspot-btn:hover svg {
+  transform: rotate(90deg);
+}
+
+.tisso-hotspot-btn:focus-visible {
+  outline: 2px solid var(--tisso-black);
+  outline-offset: 3px;
+}
+
+/* Pulsing subtle ring around hotspot */
+.tisso-hotspot-btn::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  animation: tisso-pulse 2.5s infinite;
+}
+
+@keyframes tisso-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+
+/* ==========================================================================
+   PRODUCT POPUP / MODAL
+   ========================================================================== */
+
+.tisso-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.tisso-modal-backdrop.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.tisso-modal {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 100%;
+  max-width: 360px;
+  padding: 24px 20px 24px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  font-family: 'Jost', sans-serif !important;
+}
+
+.tisso-modal-backdrop.is-active .tisso-modal {
+  transform: translateY(0) scale(1);
+}
+
+/* Close Button (X in top right) */
+.tisso-modal__close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  transition: transform 0.2s ease;
+  z-index: 10;
+}
+
+.tisso-modal__close-btn:hover {
+  transform: scale(1.1);
+}
+
+.tisso-modal__close-btn:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* Product Info Header in Modal */
+.tisso-modal__product-header {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.tisso-modal__thumbnail {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  background-color: #f5f5f5;
+  overflow: hidden;
+  position: relative;
+}
+
+.tisso-modal__thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.tisso-modal__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tisso-modal__title {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 22px !important;
+  color: #000000 !important;
+  margin: 0 0 6px 0 !important;
+  letter-spacing: normal !important;
+}
+
+.tisso-modal__price-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tisso-modal__price {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 22px !important;
+  color: #000000 !important;
+}
+
+.tisso-modal__compare-price {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 14px !important;
+  color: #888888 !important;
+  text-decoration: line-through;
+}
+
+.tisso-modal__description {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 16px !important;
+  color: #000000 !important;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Options / Variant Selectors */
+.tisso-modal__options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.tisso-option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tisso-option-label {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 18px !important;
+  color: #000000 !important;
+}
+
+/* Option Pills (e.g. Color) */
+.tisso-pills-list {
+  display: flex;
+  width: 100%;
+  height: 42px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+
+.tisso-pill-item {
+  flex: 1 1 0;
+  height: 100%;
+  position: relative;
+}
+
+.tisso-pill-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tisso-pill-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #000000 !important;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  border-right: 1px solid #000000;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  user-select: none;
+}
+
+.tisso-pill-item:last-child .tisso-pill-label {
+  border-right: none;
+}
+
+.tisso-pill-input:checked + .tisso-pill-label {
+  background-color: #FFFFFF;
+  box-shadow: inset 0 0 0 1.5px #000000;
+  font-weight: 500 !important;
+}
+
+.tisso-pill-input:focus-visible + .tisso-pill-label {
+  outline: 2px solid #000000;
+  outline-offset: -2px;
+}
+
+/* Option Dropdown (e.g. Size) */
+.tisso-select-wrapper {
+  position: relative;
+  width: 100%;
+  height: 42px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+}
+
+.tisso-select {
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0 50px 0 14px;
+  font-size: 15px !important;
+  font-family: 'Jost', sans-serif !important;
+  font-weight: 400 !important;
+  color: #000000 !important;
+  cursor: pointer;
+  border-radius: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.tisso-select-chevron-wrap {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 100%;
+  border-left: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.tisso-select-chevron-wrap svg {
+  width: 14px;
+  height: 8px;
+  display: block;
+}
+
+/* Modal Add To Cart Button */
+.tisso-btn--modal-add {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  padding: 0 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  border-radius: 0;
+  position: relative;
+  margin-top: 24px;
+  box-sizing: border-box;
+}
+
+.tisso-btn--modal-add .tisso-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.tisso-btn--modal-add .tisso-arrow svg {
+  width: 34px;
+  height: 12px;
+  display: block;
+}
+
+.tisso-btn--modal-add:hover:not(:disabled) {
+  background-color: #222222;
+}
+
+.tisso-btn--modal-add:hover:not(:disabled) .tisso-arrow {
+  transform: translateX(4px);
+}
+
+.tisso-btn--modal-add:disabled,
+.tisso-btn--modal-add[aria-disabled="true"] {
+  background-color: #888888;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.tisso-btn--modal-add.is-loading .tisso-btn-text,
+.tisso-btn--modal-add.is-loading .tisso-arrow {
+  opacity: 0;
+}
+
+.tisso-spinner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: tisso-spin 0.7s linear infinite;
+  display: none;
+}
+
+.tisso-btn--modal-add.is-loading .tisso-spinner {
+  display: block;
+}
+
+@keyframes tisso-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Toast Messages */
+.tisso-modal__message {
+  margin-top: 12px;
+  font-size: 0.78rem;
+  text-align: center;
+  padding: 8px 12px;
+  display: none;
+}
+
+.tisso-modal__message.is-error {
+  display: block;
+  background-color: #ffebe9;
+  color: #c53030;
+  border: 1px solid #ffc1bc;
+}
+
+.tisso-modal__message.is-success {
+  display: block;
+  background-color: #e6fffa;
+  color: #234e52;
+  border: 1px solid #b2f5ea;
+}
+
+/* Lock scroll class for body */
+body.tisso-modal-open {
+  overflow: hidden !important;
+}
+
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE BREAKPOINTS (Header & Grid)
+   ========================================================================== */
+
+@media (max-width: 989px) {
+  .tisso-header__inner {
+    padding: 10px 24px;
+  }
+
+  .tisso-banner-announcement--desktop {
+    padding: 10px 24px;
+  }
+
+  .tisso-grid-container {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 749px) {
+  /* Banner Header on Mobile */
+  .tisso-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 20px;
+    min-height: 56px;
+  }
+
+  .tisso-header__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .tisso-header__logo {
+    justify-self: center;
+  }
+
+  .tisso-logo-svg-wrap {
+    gap: 8px;
+  }
+
+  .tisso-header__message,
+  .tisso-header__button {
+    display: none !important;
+  }
+
+  /* Product Grid on Mobile: 2x3 */
+  .tisso-grid-section {
+    padding: 36px 0 50px 0;
+  }
+
+  .tisso-grid-container {
+    padding: 0 16px;
+  }
+
+  .tisso-grid-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .tisso-grid-title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .tisso-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .tisso-hotspot-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .tisso-hotspot-btn svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  /* Modal on Mobile */
+  .tisso-modal {
+    padding: 20px 16px;
+    max-width: 95vw;
+  }
+
+  .tisso-modal__thumbnail {
+    width: 75px;
+    height: 75px;
+  }
+
+  .tisso-modal__title {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,324 @@
+{{ 'tisso-gift-guide.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 0 }}px;
+  }
+{%- endstyle -%}
+
+<!-- EXACT TISSO VISON HEADER -->
+<header class="tisso-header" aria-label="Tisso Navigation">
+  <div class="tisso-header__inner">
+    <div class="tisso-header__logo">
+      <a href="{{ routes.root_url | default: '/' }}" aria-label="TISSO VISON Home" class="tisso-logo-svg-wrap">
+        <!-- TISSO -->
+        <span class="tisso-logo-word" aria-hidden="true">
+          <!-- T -->
+          <svg width="10" height="19" viewBox="0 0 10 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.31791 0V2.74427L8.95497 3.10597H6.21194V18.6358H3.10597V3.10597H0V0.362939L0.362938 0H9.31791Z" fill="currentColor"/></svg>
+          <!-- I -->
+          <svg width="4" height="19" viewBox="0 0 4 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.10597 0V18.2741L2.74303 18.6358H0V0.362939L0.361704 0H3.10597Z" fill="currentColor"/></svg>
+          <!-- S -->
+          <svg width="12" height="19" viewBox="0 0 12 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.5218 0C8.33403 0 10.0524 0.946852 10.9993 2.32948L9.18829 4.14171H8.61796C8.24268 3.33929 7.4168 2.84796 6.5218 2.84796C5.45644 2.84796 4.45774 3.72445 4.39848 4.84043C4.35528 5.67988 4.74043 6.20454 5.43545 6.65265C6.18355 7.13534 6.4897 7.33656 7.50569 7.89455C8.61302 8.50315 11.4141 9.6969 11.4141 12.8387C11.4141 15.936 8.82535 18.8173 5.48606 18.8173C5.0577 18.8173 4.2812 18.7692 3.701 18.6358C2.0653 18.2396 1.07277 17.6211 0 16.3582L2.32948 13.9769L3.1319 14.6497C3.4936 14.9336 4.28861 15.5052 5.04535 15.6076C6.58352 15.8163 7.61556 14.799 7.81554 13.7954C7.97479 13.0029 7.77357 11.8202 6.49588 11.2079C6.49588 11.2079 4.19232 9.92775 3.18251 9.34384C2.15418 8.74881 1.06043 7.12423 1.06043 5.17744C1.06043 3.72815 1.72458 2.32454 2.79488 1.34683C3.62199 0.588851 4.75648 0 6.5218 0Z" fill="currentColor"/></svg>
+          <!-- S -->
+          <svg width="12" height="19" viewBox="0 0 12 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.5218 0C8.33403 0 10.0524 0.946852 10.9993 2.32948L9.18829 4.14171H8.61796C8.24268 3.33929 7.4168 2.84796 6.5218 2.84796C5.45644 2.84796 4.45774 3.72445 4.39848 4.84043C4.35528 5.67988 4.74043 6.20454 5.43545 6.65265C6.18355 7.13534 6.4897 7.33656 7.50569 7.89455C8.61302 8.50315 11.4141 9.6969 11.4141 12.8387C11.4141 15.936 8.82535 18.8173 5.48606 18.8173C5.0577 18.8173 4.2812 18.7692 3.701 18.6358C2.0653 18.2396 1.07277 17.6211 0 16.3582L2.32948 13.9769L3.1319 14.6497C3.4936 14.9336 4.28861 15.5052 5.04535 15.6076C6.58352 15.8163 7.61556 14.799 7.81554 13.7954C7.97479 13.0029 7.77357 11.8202 6.49588 11.2079C6.49588 11.2079 4.19232 9.92775 3.18251 9.34384C2.15418 8.74881 1.06043 7.12423 1.06043 5.17744C1.06043 3.72815 1.72458 2.32454 2.79488 1.34683C3.62199 0.588851 4.75648 0 6.5218 0Z" fill="currentColor"/></svg>
+          <!-- O -->
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.31791 0C11.7892 0 14.1592 0.981706 15.9067 2.72915C17.6541 4.4766 18.6358 6.84665 18.6358 9.31791C18.6358 11.7892 17.6541 14.1592 15.9067 15.9067C14.1592 17.6541 11.7892 18.6358 9.31791 18.6358C6.84665 18.6358 4.4766 17.6541 2.72915 15.9067C0.981705 14.1592 0 11.7892 0 9.31791C0 6.84665 0.981705 4.4766 2.72915 2.72915C4.4766 0.981706 6.84665 0 9.31791 0ZM9.31668 3.10721C8.50083 3.10729 7.69299 3.26806 6.93928 3.58034C6.18557 3.89263 5.50075 4.35031 4.92392 4.92726C3.75895 6.09245 3.10457 7.67271 3.10474 9.32038C3.1049 10.9681 3.75959 12.5482 4.92479 13.7131C6.08998 14.8781 7.67024 15.5325 9.31791 15.5323C10.9656 15.5323 12.5458 14.8778 13.7109 13.7127C14.8759 12.5476 15.5305 10.9674 15.5305 9.31976C15.5305 7.67209 14.8759 6.0919 13.7109 4.92682C12.5458 3.76174 10.9656 3.10721 9.31791 3.10721H9.31668Z" fill="currentColor"/></svg>
+        </span>
+
+        <!-- VISON -->
+        <span class="tisso-logo-word" aria-hidden="true">
+          <!-- V -->
+          <svg width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.36521 0L8.07602 11.3635L12.7868 0H16.1508L8.43772 18.6371L8.07602 19L7.71307 18.6371L0 0H3.36521Z" fill="currentColor"/></svg>
+          <!-- I -->
+          <svg width="4" height="19" viewBox="0 0 4 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.10597 0V18.2741L2.74303 18.6358H0V0.362939L0.361704 0H3.10597Z" fill="currentColor"/></svg>
+          <!-- S -->
+          <svg width="12" height="19" viewBox="0 0 12 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.5218 0C8.33403 0 10.0524 0.946852 10.9993 2.32948L9.18829 4.14171H8.61796C8.24268 3.33929 7.4168 2.84796 6.5218 2.84796C5.45644 2.84796 4.45774 3.72445 4.39848 4.84043C4.35528 5.67988 4.74043 6.20454 5.43545 6.65265C6.18355 7.13534 6.4897 7.33656 7.50569 7.89455C8.61302 8.50315 11.4141 9.6969 11.4141 12.8387C11.4141 15.936 8.82535 18.8173 5.48606 18.8173C5.0577 18.8173 4.2812 18.7692 3.701 18.6358C2.0653 18.2396 1.07277 17.6211 0 16.3582L2.32948 13.9769L3.1319 14.6497C3.4936 14.9336 4.28861 15.5052 5.04535 15.6076C6.58352 15.8163 7.61556 14.799 7.81554 13.7954C7.97479 13.0029 7.77357 11.8202 6.49588 11.2079C6.49588 11.2079 4.19232 9.92775 3.18251 9.34384C2.15418 8.74881 1.06043 7.12423 1.06043 5.17744C1.06043 3.72815 1.72458 2.32454 2.79488 1.34683C3.62199 0.588851 4.75648 0 6.5218 0Z" fill="currentColor"/></svg>
+          <!-- O -->
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.31791 0C11.7892 0 14.1592 0.981706 15.9067 2.72915C17.6541 4.4766 18.6358 6.84665 18.6358 9.31791C18.6358 11.7892 17.6541 14.1592 15.9067 15.9067C14.1592 17.6541 11.7892 18.6358 9.31791 18.6358C6.84665 18.6358 4.4766 17.6541 2.72915 15.9067C0.981705 14.1592 0 11.7892 0 9.31791C0 6.84665 0.981705 4.4766 2.72915 2.72915C4.4766 0.981706 6.84665 0 9.31791 0ZM9.31668 3.10721C8.50083 3.10729 7.69299 3.26806 6.93928 3.58034C6.18557 3.89263 5.50075 4.35031 4.92392 4.92726C3.75895 6.09245 3.10457 7.67271 3.10474 9.32038C3.1049 10.9681 3.75959 12.5482 4.92479 13.7131C6.08998 14.8781 7.67024 15.5325 9.31791 15.5323C10.9656 15.5323 12.5458 14.8778 13.7109 13.7127C14.8759 12.5476 15.5305 10.9674 15.5305 9.31976C15.5305 7.67209 14.8759 6.0919 13.7109 4.92682C12.5458 3.76174 10.9656 3.10721 9.31791 3.10721H9.31668Z" fill="currentColor"/></svg>
+          <!-- N -->
+          <svg width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.361704 0L12.4227 12.0609V0.724644L12.7856 0.361705H15.1669L15.5299 0.724644V18.9975H14.9595L3.10598 7.14398V18.6358L2.74303 18.9975H0.361704L0 18.6358V0.361705L0.361704 0Z" fill="currentColor"/></svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- Promotional message -->
+    <div class="tisso-header__message">
+      {{ section.settings.header_text | default: 'Find the ideal gift for your loved ones.' }}
+    </div>
+
+    <!-- Yellow Choose Gift CTA -->
+    <a
+      href="{{ section.settings.header_button_url | default: '#tisso-product-grid' }}"
+      class="tisso-header__button"
+      aria-label="{{ section.settings.header_button_text | default: 'CHOOSE GIFT' }}"
+    >
+      <span class="tisso-header__button-text">
+        {{ section.settings.header_button_text | default: 'CHOOSE GIFT' }}
+      </span>
+      <span class="tisso-header__arrow" aria-hidden="true">
+        <svg width="26" height="12" viewBox="0 0 26 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.75 4.77298L7.37629e-08 4.77298L-7.37629e-08 6.27298L0.75 6.27298L0.75 4.77298ZM25.2803 6.05331C25.5732 5.76042 25.5732 5.28554 25.2803 4.99265L20.5074 0.21968C20.2145 -0.073213 19.7396 -0.0732131 19.4467 0.21968C19.1538 0.512574 19.1538 0.987447 19.4467 1.28034L23.6893 5.52298L19.4467 9.76562C19.1538 10.0585 19.1538 10.5334 19.4467 10.8263C19.7396 11.1192 20.2145 11.1192 20.5074 10.8263L25.2803 6.05331ZM0.75 6.27298L24.75 6.27298L24.75 4.77298L0.75 4.77298L0.75 6.27298Z" fill="currentColor"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+</header>
+
+<!-- EXACT FIGMA HERO SECTION -->
+<section class="tisso-gift-guide-hero section-{{ section.id }}-padding" data-section-id="{{ section.id }}">
+  <!-- 1. DESKTOP HERO CANVAS (1440px x 780px) -->
+  <div class="tisso-hero-canvas-desktop">
+    <!-- Desktop Illustration (Top 390px) -->
+    <div class="tisso-hero-illustration-desktop" aria-hidden="true">
+      {%- if section.settings.background_image != blank -%}
+        {{
+          section.settings.background_image
+          | image_url: width: 1800
+          | image_tag:
+            loading: 'eager',
+            fetchpriority: 'high',
+            widths: '1100, 1440, 1800',
+            alt: section.settings.desktop_heading | default: 'The Gift Guide illustration'
+        }}
+      {%- else -%}
+        <img
+          src="{{ 'tisso-banner-illustration.svg' | asset_url }}"
+          alt="{{ section.settings.desktop_heading | default: 'The Gift Guide illustration' }}"
+          width="1440"
+          height="390"
+          loading="eager"
+        >
+      {%- endif -%}
+    </div>
+
+    <!-- Desktop Heading (left: 67px, top: 425px) -->
+    <h1 class="tisso-gift-guide-hero__title--desktop">
+      {{ section.settings.desktop_heading | default: 'The Gift Guide' }}
+    </h1>
+
+    <!-- Desktop Description (left: 67px, top: 545px, width: 483px) -->
+    <div class="tisso-gift-guide-hero__description--desktop">
+      {{ section.settings.desktop_description | default: 'Discover Joy: Your Ultimate Holiday Gift Destination.<br>Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.' }}
+    </div>
+
+    <!-- Desktop CTA Button (left: 67px, top: 679px, width: 220px, height: 50px) -->
+    <a
+      href="{{ section.settings.desktop_shop_now_url | default: '#tisso-product-grid' }}"
+      class="tisso-gift-guide-hero__button--desktop"
+      aria-label="{{ section.settings.desktop_shop_now_text | default: 'SHOP NOW' }}"
+    >
+      <span>{{ section.settings.desktop_shop_now_text | default: 'SHOP NOW' }}</span>
+      <span class="tisso-hero__arrow" aria-hidden="true">
+        <svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.75 4.77298L7.37629e-08 4.77298L-7.37629e-08 6.27298L0.75 6.27298L0.75 4.77298ZM25.2803 6.05331C25.5732 5.76042 25.5732 5.28554 25.2803 4.99265L20.5074 0.21968C20.2145 -0.073213 19.7396 -0.0732131 19.4467 0.21968C19.1538 0.512574 19.1538 0.987447 19.4467 1.28034L23.6893 5.52298L19.4467 9.76562C19.1538 10.0585 19.1538 10.5334 19.4467 10.8263C19.7396 11.1192 20.2145 11.1192 20.5074 10.8263L25.2803 6.05331ZM0.75 6.27298L24.75 6.27298L24.75 4.77298L0.75 4.77298L0.75 6.27298Z" fill="currentColor"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+
+  <!-- 2. MOBILE HERO CANVAS (375px x 421px) -->
+  <div class="tisso-hero-canvas-mobile">
+    <!-- Mobile Heading (top: 49px, center) -->
+    <h1 class="tisso-gift-guide-hero__title--mobile">
+      {{ section.settings.mobile_heading | default: 'The Gift Guide' }}
+    </h1>
+
+    <!-- Mobile Description (top: 103px, width: 340px, center) -->
+    <div class="tisso-gift-guide-hero__description--mobile">
+      {{ section.settings.mobile_description | default: 'Discover Joy: Your Ultimate Holiday Gift Destination.' }}
+    </div>
+
+    <!-- Mobile Illustration Frame (686px x 264px at top: 157px) -->
+    <div class="tisso-hero-illustration-mobile" aria-hidden="true">
+      {%- if section.settings.mobile_background_image != blank -%}
+        {{
+          section.settings.mobile_background_image
+          | image_url: width: 800
+          | image_tag:
+            loading: 'eager',
+            widths: '400, 686, 800',
+            alt: section.settings.mobile_heading | default: 'The Gift Guide mobile illustration'
+        }}
+      {%- else -%}
+        <img
+          src="{{ 'tisso-banner-illustration.svg' | asset_url }}"
+          alt="{{ section.settings.mobile_heading | default: 'The Gift Guide mobile illustration' }}"
+          width="686"
+          height="264"
+          loading="eager"
+        >
+      {%- endif -%}
+    </div>
+
+    <!-- Mobile CTA Button (top: 337px, center) -->
+    <a
+      href="{{ section.settings.mobile_shop_now_url | default: section.settings.desktop_shop_now_url | default: '#tisso-product-grid' }}"
+      class="tisso-gift-guide-hero__button--mobile"
+      aria-label="{{ section.settings.mobile_shop_now_text | default: 'SHOP NOW' }}"
+    >
+      <span>{{ section.settings.mobile_shop_now_text | default: 'SHOP NOW' }}</span>
+      <span class="tisso-hero__arrow" aria-hidden="true">
+        <svg width="26" height="12" viewBox="0 0 26 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.75 4.77298L7.37629e-08 4.77298L-7.37629e-08 6.27298L0.75 6.27298L0.75 4.77298ZM25.2803 6.05331C25.5732 5.76042 25.5732 5.28554 25.2803 4.99265L20.5074 0.21968C20.2145 -0.073213 19.7396 -0.0732131 19.4467 0.21968C19.1538 0.512574 19.1538 0.987447 19.4467 1.28034L23.6893 5.52298L19.4467 9.76562C19.1538 10.0585 19.1538 10.5334 19.4467 10.8263C19.7396 11.1192 20.2145 11.1192 20.5074 10.8263L25.2803 6.05331ZM0.75 6.27298L24.75 6.27298L24.75 4.77298L0.75 4.77298L0.75 6.27298Z" fill="#F5F5F5"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+
+  <!-- Bottom Announcement Bar -->
+  {%- if section.settings.desktop_announcement_text != blank or section.settings.mobile_announcement_text != blank or section.settings.announcement_text != blank -%}
+    <div class="tisso-banner-announcement">
+      <div class="tisso-banner-announcement--desktop">
+        {{ section.settings.desktop_announcement_text | default: section.settings.announcement_text | default: 'SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL' }}
+      </div>
+      <div class="tisso-banner-announcement--mobile">
+        {{ section.settings.mobile_announcement_text | default: section.settings.announcement_text | default: 'SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR' }}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Tisso Gift Guide Banner",
+  "tag": "section",
+  "class": "section-tisso-banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header Settings"
+    },
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Header promotional text",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "header_button_text",
+      "label": "Header Button Text",
+      "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "header_button_url",
+      "label": "Header Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Hero Content"
+    },
+    {
+      "type": "text",
+      "id": "desktop_heading",
+      "label": "Desktop Heading",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "desktop_description",
+      "label": "Desktop Description",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination.\nExplore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    {
+      "type": "text",
+      "id": "desktop_shop_now_text",
+      "label": "Desktop Shop Now Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "desktop_shop_now_url",
+      "label": "Desktop Shop Now URL"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Hero Content"
+    },
+    {
+      "type": "text",
+      "id": "mobile_heading",
+      "label": "Mobile Heading",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "mobile_description",
+      "label": "Mobile Description",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
+    },
+    {
+      "type": "text",
+      "id": "mobile_shop_now_text",
+      "label": "Mobile Shop Now Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "mobile_shop_now_url",
+      "label": "Mobile Shop Now URL"
+    },
+    {
+      "type": "header",
+      "content": "Background / Illustration"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Desktop Background Image Override"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_image",
+      "label": "Mobile Background Image Override"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Announcement"
+    },
+    {
+      "type": "text",
+      "id": "desktop_announcement_text",
+      "label": "Desktop Announcement Text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    },
+    {
+      "type": "text",
+      "id": "mobile_announcement_text",
+      "label": "Mobile Announcement Text",
+      "default": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tisso Gift Guide Banner"
+    }
+  ]
+}
+{% endschema %}
